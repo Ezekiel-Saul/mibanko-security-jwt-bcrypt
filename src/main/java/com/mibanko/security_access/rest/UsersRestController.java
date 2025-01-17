@@ -26,11 +26,13 @@ public class UsersRestController {
     public List<User> getUsers(){
         return userService.getListUsers();
     }
+
     @PostMapping("/login")
     public String login(@RequestBody User user){
         System.out.println(user);
         return userService.verify(user);
     }
+
     @PostMapping("/register")
     public User addUser(@RequestBody User user){
         user.setPassword(bcrypt.encode(user.getPassword()));
